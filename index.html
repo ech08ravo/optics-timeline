@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optics & Neural Interfaces Timeline</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    ::-webkit-scrollbar { height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+const timelineData = [
+  {
+    era: "Antiquity",
+    period: "750 BCE – 100 CE",
+    events: [
+      { year: "750–710 BCE", title: "Nimrud Lens", desc: "Rock crystal lens from Assyria. 3× magnification. Discovered by Layard, 1853.", type: "optics", source: "https://www.britishmuseum.org/collection/object/W_1848-1109-25" },
+      { year: "424 BCE", title: "Burning Glasses", desc: "Aristophanes references fire-starting lenses in The Clouds.", type: "optics", source: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0027" },
+      { year: "300 BCE", title: "Euclid's Optics", desc: "Geometric foundations of light and vision established.", type: "theory", source: "https://mathshistory.st-andrews.ac.uk/Biographies/Euclid/" },
+      { year: "1st C CE", title: "Seneca's Observation", desc: "Magnification through water-filled glass globes noted.", type: "optics", source: "https://en.wikipedia.org/wiki/History_of_optics" },
+    ]
+  },
+  {
+    era: "Medieval",
+    period: "980 – 1300 CE",
+    events: [
+      { year: "980s CE", title: "Ibn Sahl", desc: "Law of refraction formulated. Predates Snell by 600 years.", type: "theory", source: "https://doi.org/10.1086/374093" },
+      { year: "1021 CE", title: "Book of Optics", desc: "Ibn al-Haytham establishes scientific optics and experimental method.", type: "theory", source: "https://www.britannica.com/biography/Ibn-al-Haytham" },
+      { year: "11–13th C", title: "Reading Stones", desc: "Plano-convex polished beryl lenses aid manuscript work.", type: "optics", source: "https://doi.org/10.7208/chicago/9780226426716.001.0001" },
+      { year: "c. 1286", title: "Spectacles", desc: "First wearable eyeglasses appear in Northern Italy.", type: "optics", source: "https://doi.org/10.7208/chicago/9780226426716.001.0001" },
+    ]
+  },
+  {
+    era: "Renaissance",
+    period: "1500 – 1620",
+    events: [
+      { year: "c. 1500", title: "Da Vinci's Design", desc: "Multi-lens grinding machine sketched in Codex Atlanticus.", type: "manufacturing", source: "https://www.britannica.com/biography/Leonardo-da-Vinci" },
+      { year: "1608", title: "Telescope Patent", desc: "Lippershey files first telescope patent in the Netherlands.", type: "optics", source: "https://doi.org/10.1090/S0002-9947-1977-0441622-X" },
+      { year: "1609", title: "Galileo's Telescope", desc: "30× magnification reveals lunar craters, Jupiter's moons.", type: "optics", source: "https://www.britannica.com/biography/Galileo-Galilei" },
+      { year: "1611", title: "Kepler's Dioptrice", desc: "Convex-convex astronomical telescope design described.", type: "theory", source: "https://www.britannica.com/science/Keplerian-telescope" },
+    ]
+  },
+  {
+    era: "17th Century",
+    period: "1620 – 1704",
+    events: [
+      { year: "c. 1620", title: "Compound Microscope", desc: "Multiple-lens microscopes emerge from Dutch makers.", type: "optics", source: "https://www.britannica.com/technology/microscope" },
+      { year: "1665", title: "Micrographia", desc: "Hooke reveals cellular structure. Coins term 'cell'.", type: "theory", source: "https://www.gutenberg.org/ebooks/15491" },
+      { year: "1668", title: "Reflecting Telescope", desc: "Newton uses mirrors to eliminate chromatic aberration.", type: "optics", source: "https://royalsocietypublishing.org/doi/10.1098/rstl.1672.0069" },
+      { year: "1674–83", title: "Leeuwenhoek", desc: "Single-lens microscopes (275×) reveal bacteria, blood cells.", type: "optics", source: "https://www.britannica.com/biography/Antonie-van-Leeuwenhoek" },
+      { year: "1704", title: "Newton's Opticks", desc: "Systematises experiments on light, colour, spectrum.", type: "theory", source: "https://www.gutenberg.org/ebooks/33504" },
+    ]
+  },
+  {
+    era: "18th Century",
+    period: "1729 – 1758",
+    events: [
+      { year: "1729–33", title: "Achromatic Lens", desc: "Chester Moor Hall combines crown and flint glass.", type: "optics", source: "https://www.britannica.com/technology/achromatic-lens" },
+      { year: "1751–72", title: "Encyclopédie", desc: "Diderot documents lens-grinding with detailed engravings.", type: "manufacturing", source: "https://encyclopedie.uchicago.edu/" },
+      { year: "1758", title: "Dollond's Patent", desc: "Achromatic doublet commercialised. Copley Medal awarded.", type: "optics", source: "https://royalsocietypublishing.org/doi/10.1098/rstl.1758.0028" },
+    ]
+  },
+  {
+    era: "19th Century",
+    period: "1808 – 1888",
+    events: [
+      { year: "1808", title: "Grinding Machines", desc: "Fraunhofer enables industrial-scale lens production.", type: "manufacturing", source: "https://www.britannica.com/biography/Joseph-von-Fraunhofer" },
+      { year: "1822", title: "Fresnel Lens", desc: "Stepped lens design projects lighthouse beams 20+ miles.", type: "optics", source: "https://www.britannica.com/technology/Fresnel-lens" },
+      { year: "1839", title: "Photography", desc: "Daguerre and Talbot announce photographic processes.", type: "optics", source: "https://www.britannica.com/technology/photography" },
+      { year: "1846", title: "Zeiss Founded", desc: "Carl Zeiss establishes optical works in Jena.", type: "manufacturing", source: "https://www.zeiss.com/corporate/en/about-zeiss/history.html" },
+      { year: "1866", title: "Abbe Joins Zeiss", desc: "Mathematical theory of microscope resolution developed.", type: "theory", source: "https://doi.org/10.1007/BF02956173" },
+      { year: "1888", title: "Kodak Camera", desc: "Photography democratised for consumer market.", type: "optics", source: "https://www.britannica.com/technology/Kodak-camera" },
+    ]
+  },
+  {
+    era: "20th Century",
+    period: "1904 – 1990s",
+    events: [
+      { year: "1904", title: "Apochromatic Lenses", desc: "Three-wavelength chromatic correction achieved.", type: "optics", source: "https://www.britannica.com/technology/apochromatic-lens" },
+      { year: "1930s–50s", title: "Lens Coatings", desc: "Anti-reflection thin-film coatings improve transmission.", type: "manufacturing", source: "https://doi.org/10.1364/JOSA.26.000239" },
+      { year: "1955", title: "Diamond Edger", desc: "Lemay's Diamaline enables plastic lens manufacture.", type: "manufacturing", source: "https://www.thevisioncouncil.org/history-of-eyewear" },
+      { year: "1960", title: "Laser Invented", desc: "Maiman demonstrates first working laser at Hughes.", type: "optics", source: "https://doi.org/10.1038/187493a0" },
+      { year: "1980s–90s", title: "CNC Manufacturing", desc: "Computer-controlled precision aspheric production.", type: "manufacturing", source: "https://doi.org/10.1117/12.7973533" },
+    ]
+  },
+  {
+    era: "21st Century",
+    period: "2004 – 2024",
+    events: [
+      { year: "2004", title: "Superlens", desc: "Metamaterial lens demonstrated. Beats diffraction limit.", type: "optics", source: "https://doi.org/10.1103/PhysRevLett.85.3966" },
+      { year: "2010s", title: "Flat Optics", desc: "Metasurface lenses for smartphones and computational imaging.", type: "optics", source: "https://doi.org/10.1126/science.aaf6644" },
+      { year: "2019", title: "BrainNet", desc: "Three humans collaborate via brain-to-brain interface. 81% accuracy.", type: "neural", source: "https://doi.org/10.1038/s41598-019-41895-7" },
+      { year: "2022", title: "Mojo Lens Demo", desc: "First AR contact lens with 14,000 PPI MicroLED. Program later cancelled.", type: "convergence", source: "https://www.mojo.vision/news/a-new-direction" },
+      { year: "2024", title: "Iron Beam Combat", desc: "Israel deploys first operational laser air defense. 40 intercepts.", type: "weapons", source: "https://www.timesofisrael.com/laser-based-iron-beam-interception-system-declared-operational/" },
+      { year: "2024", title: "Neuralink Milestones", desc: "12 patients implanted. 15,000+ cumulative usage hours.", type: "neural", source: "https://en.wikipedia.org/wiki/Neuralink" },
+    ]
+  },
+  {
+    era: "2025–2030",
+    period: "Projected",
+    events: [
+      { year: "2025", title: "FDA BCI Clearance", desc: "Precision Neuroscience receives first full 510(k) wireless BCI clearance.", type: "neural", source: "https://www.cnbc.com/2025/04/17/brain-implant-cleared-fda-musk-neuralink-rival-precision-neuroscience.html" },
+      { year: "2025", title: "Meta Neural Wristband", desc: "EMG-based consumer device ships with Ray-Ban glasses.", type: "neural", source: "https://about.meta.com/realitylabs/" },
+      { year: "2025", title: "Iron Beam Operational", desc: "World's first combat-proven laser defense. ~$1,000/shot vs $40,000 missile.", type: "weapons", source: "https://www.jns.org/israel-becomes-first-nation-to-deploy-historic-laser-defense-system/" },
+      { year: "2026", title: "XR Contact Lens", desc: "XPANCEO targets functional smart contact lens prototype.", type: "convergence", source: "https://www.xrtoday.com/augmented-reality/xr-contact-lenses-due-in-2026-says-xpanceo-at-mwc-2024/" },
+      { year: "2027", title: "DragonFire Deployed", desc: "UK laser weapon on Type 45 destroyers. £10/shot.", type: "weapons", source: "https://www.gov.uk/government/news/uk-to-develop-laser-weapon-system" },
+      { year: "2027", title: "Meta Orion AR", desc: "Neural-controlled AR glasses target public release.", type: "convergence", source: "https://about.meta.com/realitylabs/" },
+      { year: "2027–28", title: "Optogenetic Approval", desc: "FDA approval expected for retinitis pigmentosa treatment.", type: "convergence", source: "https://spectrum.ieee.org/pixium-bionic-eye-tech-rescued" },
+      { year: "2028–29", title: "Consumer Implants", desc: "Neuralink targets healthy individual implants.", type: "neural", source: "https://www.clinicaltrialsarena.com/analyst-comment/brain-computer-interfaces-closer/" },
+      { year: "2030", title: "BCI Commercialisation", desc: "First commercial medical BCIs. Market reaches $4.5–8.5B.", type: "neural", source: "https://www.mordorintelligence.com/industry-reports/brain-computer-interface-market" },
+      { year: "2030", title: "30% Knowledge Workers", desc: "Gartner predicts bidirectional brain-machine interface dependency.", type: "neural", source: "https://www.gartner.com/en/newsroom/press-releases/2024-10-21-gartner-identifies-the-top-10-strategic-technology-trends-for-2025" },
+    ]
+  }
+];
+
+const typeColors = {
+  optics: { bg: "bg-teal-50", border: "border-teal-200", dot: "bg-teal-500" },
+  theory: { bg: "bg-slate-50", border: "border-slate-200", dot: "bg-slate-400" },
+  manufacturing: { bg: "bg-gray-50", border: "border-gray-200", dot: "bg-gray-400" },
+  neural: { bg: "bg-teal-50", border: "border-teal-300", dot: "bg-teal-600" },
+  weapons: { bg: "bg-slate-100", border: "border-slate-300", dot: "bg-slate-500" },
+  convergence: { bg: "bg-teal-100", border: "border-teal-400", dot: "bg-teal-700" },
+};
+
+function OpticsNeuralTimeline() {
+  const [expandedEvents, setExpandedEvents] = React.useState({});
+  const [allExpanded, setAllExpanded] = React.useState(false);
+  const [currentEra, setCurrentEra] = React.useState(0);
+  const scrollRef = React.useRef(null);
+
+  const toggleEvent = (key) => {
+    setExpandedEvents(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const toggleAll = () => {
+    if (allExpanded) {
+      setExpandedEvents({});
+      setAllExpanded(false);
+    } else {
+      const all = {};
+      timelineData.forEach((era, eraIndex) => {
+        era.events.forEach((_, eventIndex) => {
+          all[`${eraIndex}-${eventIndex}`] = true;
+        });
+      });
+      setExpandedEvents(all);
+      setAllExpanded(true);
+    }
+  };
+
+  const scrollToEra = (index) => {
+    setCurrentEra(index);
+    if (scrollRef.current) {
+      const cards = scrollRef.current.querySelectorAll('.era-card');
+      if (cards[index]) {
+        cards[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      }
+    }
+  };
+
+  const navigateEra = (direction) => {
+    const newIndex = Math.max(0, Math.min(timelineData.length - 1, currentEra + direction));
+    scrollToEra(newIndex);
+  };
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (!scrollRef.current) return;
+      const scrollLeft = scrollRef.current.scrollLeft;
+      const cardWidth = 380;
+      const newEra = Math.round(scrollLeft / cardWidth);
+      if (newEra !== currentEra && newEra >= 0 && newEra < timelineData.length) {
+        setCurrentEra(newEra);
+      }
+    };
+    
+    const ref = scrollRef.current;
+    if (ref) ref.addEventListener('scroll', handleScroll);
+    return () => { if (ref) ref.removeEventListener('scroll', handleScroll); };
+  }, [currentEra]);
+
+  return (
+    <div className="min-h-screen bg-white text-slate-800 font-sans">
+      <header className="border-b border-slate-200 bg-white sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="flex items-start justify-between">
+            <div>
+              <h1 className="text-2xl font-light tracking-tight text-slate-900">
+                Optics & Neural Interfaces
+              </h1>
+              <p className="text-sm text-slate-500 mt-1 font-light">
+                750 BCE — 2030 CE · From ground glass to brain-machine convergence
+              </p>
+            </div>
+            <button
+              onClick={toggleAll}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors"
+            >
+              {allExpanded ? (
+                <>
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                  </svg>
+                  Collapse All
+                </>
+              ) : (
+                <>
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                  Expand All
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <nav className="border-b border-slate-100 bg-slate-50/50">
+        <div className="max-w-7xl mx-auto px-6 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex gap-1 overflow-x-auto pb-1">
+              {timelineData.map((era, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollToEra(index)}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-full whitespace-nowrap transition-all ${
+                    currentEra === index
+                      ? 'bg-teal-600 text-white'
+                      : 'text-slate-500 hover:text-slate-700 hover:bg-slate-100'
+                  }`}
+                >
+                  {era.era}
+                </button>
+              ))}
+            </div>
+            <div className="flex gap-2 ml-4">
+              <button
+                onClick={() => navigateEra(-1)}
+                disabled={currentEra === 0}
+                className="p-2 text-slate-400 hover:text-teal-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={() => navigateEra(1)}
+                disabled={currentEra === timelineData.length - 1}
+                className="p-2 text-slate-400 hover:text-teal-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <main className="py-8">
+        <div
+          ref={scrollRef}
+          className="overflow-x-auto scroll-smooth px-6"
+          style={{ scrollbarWidth: 'thin', scrollbarColor: '#cbd5e1 transparent' }}
+        >
+          <div className="flex gap-6 pb-4" style={{ minWidth: 'max-content' }}>
+            {timelineData.map((era, eraIndex) => (
+              <div key={eraIndex} className="era-card flex-shrink-0 w-[360px]">
+                <div className="mb-4">
+                  <div className="flex items-baseline gap-3">
+                    <h2 className="text-lg font-medium text-slate-900">{era.era}</h2>
+                    <span className="text-xs text-slate-400 font-light">{era.period}</span>
+                  </div>
+                  <div className="mt-2 h-px bg-gradient-to-r from-teal-400 to-transparent" />
+                </div>
+
+                <div className="space-y-2">
+                  {era.events.map((event, eventIndex) => {
+                    const colors = typeColors[event.type] || typeColors.optics;
+                    const key = `${eraIndex}-${eventIndex}`;
+                    const isExpanded = expandedEvents[key];
+                    
+                    return (
+                      <div
+                        key={eventIndex}
+                        className={`relative pl-4 pr-3 py-3 rounded-lg transition-all duration-200 border ${colors.border} ${colors.bg} hover:shadow-sm`}
+                      >
+                        <div className={`absolute left-0 top-4 w-2 h-2 rounded-full ${colors.dot} -translate-x-1/2`} />
+                        
+                        <div 
+                          className="flex items-start justify-between gap-2 cursor-pointer"
+                          onClick={() => toggleEvent(key)}
+                        >
+                          <div className="flex-1 min-w-0">
+                            <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">
+                              {event.year}
+                            </div>
+                            <div className="text-sm font-medium text-slate-800 mt-0.5 flex items-center gap-1.5">
+                              {event.title}
+                              {event.source && (
+                                <a
+                                  href={event.source}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="text-slate-300 hover:text-teal-500 transition-colors"
+                                  title="View source"
+                                >
+                                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                  </svg>
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                          <svg 
+                            className={`w-4 h-4 text-slate-300 flex-shrink-0 transition-transform ${isExpanded ? 'rotate-180' : ''}`} 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                        
+                        {isExpanded && (
+                          <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light">
+                            {event.desc}
+                          </p>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 mt-6">
+          <div className="flex items-center gap-4">
+            <div className="flex-1 h-0.5 bg-slate-100 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-teal-500 rounded-full transition-all duration-300"
+                style={{ width: `${((currentEra + 1) / timelineData.length) * 100}%` }}
+              />
+            </div>
+            <span className="text-xs text-slate-400 font-mono">
+              {currentEra + 1}/{timelineData.length}
+            </span>
+          </div>
+        </div>
+      </main>
+
+      <footer className="border-t border-slate-100 bg-slate-50/30">
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs">
+            <span className="text-slate-400 font-medium uppercase tracking-wider">Categories</span>
+            {[
+              { key: 'optics', label: 'Optical Devices' },
+              { key: 'theory', label: 'Theory' },
+              { key: 'manufacturing', label: 'Manufacturing' },
+              { key: 'neural', label: 'Neural Interfaces' },
+              { key: 'weapons', label: 'Directed Energy' },
+              { key: 'convergence', label: 'Optics–Neural' },
+            ].map(({ key, label }) => (
+              <div key={key} className="flex items-center gap-1.5">
+                <div className={`w-2 h-2 rounded-full ${typeColors[key].dot}`} />
+                <span className="text-slate-500">{label}</span>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-6 pt-6 border-t border-slate-100">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { value: '$4.5–8.5B', label: 'BCI Market 2030' },
+                { value: '30%', label: 'Knowledge workers using BMI by 2030' },
+                { value: '~$1,000', label: 'Cost per laser intercept' },
+                { value: '2027–28', label: 'Optogenetic FDA approval' },
+              ].map((stat, i) => (
+                <div key={i} className="text-center">
+                  <div className="text-lg font-light text-teal-600">{stat.value}</div>
+                  <div className="text-[10px] text-slate-400 uppercase tracking-wider mt-1">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="text-[10px] text-slate-300 mt-6 text-center">
+            Sources: Gartner Hype Cycle 2025 · Mordor Intelligence · IEEE Spectrum · Clinical Trials Arena · Click 
+            <svg className="w-2.5 h-2.5 inline mx-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            icons for individual sources
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<OpticsNeuralTimeline />);
+  </script>
+</body>
+</html>
