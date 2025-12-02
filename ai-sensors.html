@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Glasses: Sensors, Biohacks & Software</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f8fafc;
+      color: #334155;
+      line-height: 1.5;
+    }
+    header {
+      background: white;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      font-weight: 300;
+      font-size: 1.75rem;
+      color: #0f172a;
+    }
+    .subtitle {
+      font-size: 0.875rem;
+      color: #64748b;
+      margin-top: 0.5rem;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    section {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0f172a;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(to right, #0d9488, #14b8a6);
+      color: white;
+      margin: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+    }
+    th {
+      background: #f1f5f9;
+      color: #475569;
+      font-weight: 600;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #f1f5f9;
+      vertical-align: top;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:hover {
+      background: #f8fafc;
+    }
+    a {
+      color: #0d9488;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .link-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .link-icon svg {
+      width: 12px;
+      height: 12px;
+      opacity: 0.6;
+    }
+    .category {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      background: #f0fdfa;
+      color: #0d9488;
+      border-radius: 4px;
+      font-size: 0.6875rem;
+      font-weight: 500;
+    }
+    .category.closed { background: #fef2f2; color: #dc2626; }
+    .category.open { background: #f0fdf4; color: #16a34a; }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #94a3b8;
+      font-size: 0.75rem;
+    }
+    .key-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+    }
+    .key-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: #f8fafc;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      transition: background 0.15s;
+    }
+    .key-links a:hover {
+      background: #f0fdfa;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI Glasses: Sensors, Biohacks & Software</h1>
+    <p class="subtitle">Hardware is just the sensor — software determines capability, transparency, and validity</p>
+  </header>
+
+  <main>
+    <!-- Sensors Table -->
+    <section>
+      <h2>Sensors in AI Glasses</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Sensor Type</th>
+            <th>What It Captures</th>
+            <th>Example Products</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>RGB Camera</td>
+            <td>Visual scene, faces, text, objects</td>
+            <td><a href="https://www.meta.com/au/smart-glasses/" class="link-icon">Ray-Ban Meta <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a> · <a href="https://brilliant.xyz/" class="link-icon">Brilliant Labs Frame <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+          </tr>
+          <tr>
+            <td>Depth Camera</td>
+            <td>3D spatial mapping, distance</td>
+            <td><a href="https://www.microsoft.com/en-us/hololens" class="link-icon">HoloLens 2 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a> · <a href="https://www.magicleap.com/" class="link-icon">Magic Leap 2 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+          </tr>
+          <tr>
+            <td>Eye Tracking</td>
+            <td>Gaze direction, pupil dilation, blink rate</td>
+            <td><a href="https://www.apple.com/apple-vision-pro/" class="link-icon">Apple Vision Pro <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a> · <a href="https://www.tobii.com/" class="link-icon">Tobii <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+          </tr>
+          <tr>
+            <td>Microphone Array</td>
+            <td>Voice, ambient sound, spatial audio</td>
+            <td><a href="https://www.meta.com/au/smart-glasses/" class="link-icon">Ray-Ban Meta <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a> · <a href="https://www.evenrealities.com/" class="link-icon">Even Realities G1 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+          </tr>
+          <tr>
+            <td>Accelerometer / Gyro</td>
+            <td>Head position, movement, orientation</td>
+            <td>All smart glasses</td>
+          </tr>
+          <tr>
+            <td>EEG Electrodes</td>
+            <td>Brainwave activity</td>
+            <td><a href="https://next-mind.com/" class="link-icon">Snap NextMind <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a> · <a href="https://www.cognixion.com/" class="link-icon">Cognixion ONE <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+          </tr>
+          <tr>
+            <td>EMG Pickup</td>
+            <td>Nerve signals (wristband companion)</td>
+            <td><a href="https://about.meta.com/realitylabs/" class="link-icon">Meta Neural Wristband (2025) <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Biohacks Table -->
+    <section>
+      <h2>Fit with Existing Biohacks</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Device</th>
+            <th>Function</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Glucose Monitoring</td>
+            <td>Libre 3 / Dexcom G7</td>
+            <td>Continuous glucose via skin patch</td>
+            <td><a href="https://www.freestyle.abbott/" class="link-icon">Abbott <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a> · <a href="https://www.dexcom.com/" class="link-icon">Dexcom <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+          </tr>
+          <tr>
+            <td>Heart Rate / HRV</td>
+            <td>Oura Ring / Whoop 4.0</td>
+            <td>Sleep, HRV, strain, recovery</td>
+            <td><a href="https://ouraring.com/" class="link-icon">Oura <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a> · <a href="https://www.whoop.com/" class="link-icon">Whoop <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+          </tr>
+          <tr>
+            <td>EEG Headband</td>
+            <td>Muse 2 / Emotiv / BrainCo</td>
+            <td>Meditation, focus, attention monitoring</td>
+            <td><a href="https://choosemuse.com/" class="link-icon">Muse <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a> · <a href="https://www.emotiv.com/" class="link-icon">Emotiv <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+          </tr>
+          <tr>
+            <td>DIY Insulin</td>
+            <td>OpenAPS / Loop</td>
+            <td>Open-source artificial pancreas</td>
+            <td><a href="https://openaps.org/" class="link-icon">OpenAPS <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a> · <a href="https://loopkit.github.io/loopdocs/" class="link-icon">Loop <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+          </tr>
+          <tr>
+            <td>Transcranial Stim</td>
+            <td>Flow / Halo Sport</td>
+            <td>tDCS for depression, motor learning</td>
+            <td><a href="https://flowneuroscience.com/" class="link-icon">Flow <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a> · <a href="https://haloneuro.com/" class="link-icon">Halo <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Software Table -->
+    <section>
+      <h2>Software Currently Used with AI Glasses</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Glasses</th>
+            <th>Capabilities</th>
+            <th>Model</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://www.meta.com/ai/" class="link-icon">Meta AI <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+            <td>Ray-Ban Meta</td>
+            <td>Voice assistant, image recognition, translation, live video</td>
+            <td><span class="category closed">Proprietary</span></td>
+          </tr>
+          <tr>
+            <td><a href="https://www.letsenvision.com/" class="link-icon">Envision AI <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+            <td>Envision Glasses</td>
+            <td>Scene description, text reading for blind users</td>
+            <td><span class="category closed">Proprietary</span></td>
+          </tr>
+          <tr>
+            <td><a href="https://www.bemyeyes.com/" class="link-icon">Be My Eyes <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+            <td>Ray-Ban Meta</td>
+            <td>Volunteer + AI visual assistance</td>
+            <td><span class="category closed">GPT-4o</span></td>
+          </tr>
+          <tr>
+            <td><a href="https://brilliant.xyz/" class="link-icon">Noa <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+            <td>Brilliant Labs Frame</td>
+            <td>Open-source assistant, local LLMs</td>
+            <td><span class="category open">Open (Llama, Whisper)</span></td>
+          </tr>
+          <tr>
+            <td><a href="https://github.com/BasedHardware/OpenGlass" class="link-icon">OpenGlass <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></td>
+            <td>DIY / Frame</td>
+            <td>Open-source memory assistant</td>
+            <td><span class="category open">Open (local or API)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Options Table -->
+    <section>
+      <h2>Options & Considerations</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Factor</th>
+            <th>Closed / Proprietary</th>
+            <th>Open / Transparent</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Data Ownership</td>
+            <td>Meta, Apple, Google — data harvested</td>
+            <td>Brilliant Labs, OpenGlass — local/user-owned</td>
+            <td>Privacy, research ethics, student data</td>
+          </tr>
+          <tr>
+            <td>Processing</td>
+            <td>Cloud (latency, dependency)</td>
+            <td>On-device (private, limited)</td>
+            <td>Reliability, GDPR, institutional policy</td>
+          </tr>
+          <tr>
+            <td>Validation</td>
+            <td>Marketing claims, no peer review</td>
+            <td>Research-backed, published methods</td>
+            <td>Educational integrity, evidence-based</td>
+          </tr>
+          <tr>
+            <td>Regulatory Status</td>
+            <td>Consumer electronics (unregulated)</td>
+            <td>Medical-grade (FDA/CE cleared)</td>
+            <td>Liability, duty of care, health claims</td>
+          </tr>
+          <tr>
+            <td>Interoperability</td>
+            <td>Walled gardens</td>
+            <td>Open APIs, WebXR, OpenXR</td>
+            <td>Integration with LMS, CGMs, research tools</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Key Links -->
+    <section>
+      <h2>Key Resources</h2>
+      <div class="key-links">
+        <a href="https://www.khronos.org/openxr/">OpenXR Standard</a>
+        <a href="https://immersiveweb.dev/">WebXR Device API</a>
+        <a href="https://brilliant.xyz/">Brilliant Labs (open hardware)</a>
+        <a href="https://github.com/BasedHardware/OpenGlass">OpenGlass Project</a>
+        <a href="https://hai.stanford.edu/">Stanford HAI</a>
+        <a href="https://brain.ieee.org/">IEEE Brain Initiative</a>
+        <a href="https://www.gartner.com/en/articles/hype-cycle-for-emerging-technologies">Gartner Emerging Tech</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Hardware is the sensor. Software is the cognition. Choose accordingly.<br>
+    Landscape verified December 2025.
+  </footer>
+</body>
+</html>
